@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class App {
 
     public static void main(String[] args) {
-        // --- 1. SETUP ---
+
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         String[] wordBank = {
@@ -20,9 +20,9 @@ public class App {
 
         System.out.println("Welcome to Hangman, Alexander!");
 
-        // --- 2. MAIN GAME LOOP (for multiple rounds) ---
+
         while (playAgain) {
-            // --- 2a. INITIALIZE NEW ROUND ---
+
             String secretWord = wordBank[random.nextInt(wordBank.length)];
             char[] secretWordChars = secretWord.toCharArray();
             char[] playerGuess = new char[secretWord.length()];
@@ -46,7 +46,7 @@ public class App {
                 String input = scanner.next().toLowerCase();
                 char guess = input.charAt(0); // Take the first character of the input
 
-                // --- 3b. VALIDATE AND PROCESS GUESS ---
+
                 if (guessedLetters.indexOf(guess) != -1) {
                     System.out.println("You already guessed that letter! Try another.");
                     continue; // Skip the rest of the loop and ask for another guess
@@ -61,8 +61,6 @@ public class App {
                         isGuessCorrect = true;
                     }
                 }
-
-                // --- 3c. PROVIDE FEEDBACK ---
                 if (isGuessCorrect) {
                     System.out.println("Correct!");
                 } else {
@@ -76,7 +74,6 @@ public class App {
                 }
             }
 
-            // --- 4. END OF ROUND ---
             System.out.println("\n---------------------------------");
             if (wordIsGuessed) {
                 System.out.println("Congratulations, you win! You guessed the word:");
@@ -101,11 +98,10 @@ public class App {
         scanner.close(); // Good practice to close the scanner
     }
 
-    /**
-     * Helper method to print the current state of the player's guess.
-     * Example output: _ a _ _ l _
-     * @param array The character array representing the player's progress.
-     */
+
+     //Helper method to print the current state of the player's guess.
+
+
     public static void printCurrentState(char[] array) {
         System.out.print("Current word: ");
         for (char c : array) {
